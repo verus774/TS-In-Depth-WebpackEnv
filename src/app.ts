@@ -27,6 +27,21 @@ interface DamageLogger {
     (reason: string): void;
 }
 
+interface Person {
+    name: string;
+    email: string;
+}
+
+interface Author extends Person{
+    numBooksPublished: number;
+}
+
+interface Librarian extends Person {
+    department: string;
+    name: string;
+    assistCustomer: (custName: string) => void;
+}
+
 function getAllBooks(): Book[] {
     let books: Array<Book> = [
         {
@@ -204,3 +219,17 @@ function printBook(book: Book):void {
 // Task #8
 const logDamage: DamageLogger = (reason: string) => console.log(`Damaged: ${reason}`);
 logDamage('missing back cover');
+
+// Task #9
+const favoriteAuthor: Author = {
+    email: 'aaa@cc.com',
+    name: 'Ann',
+    numBooksPublished: 2,
+};
+
+const favoriteLibrarian: Librarian = {
+    email: 'aaa@cc.com',
+    name: 'Ann',
+    department: 'Classical literature',
+    assistCustomer: (custName: string) => console.log(custName)
+};
