@@ -113,6 +113,22 @@ function checkoutBooks(customer: string, ...bookIDs: number[]): string[] {
     return titles;
 }
 
+function getTitles(author: string): string[];
+function getTitles(available: boolean): string[];
+function getTitles(bookProp: any): string[] {
+    const books = getAllBooks();
+
+    if(typeof bookProp === 'string') {
+        return books
+            .filter(book => book.author === bookProp)
+            .map(book => book.title);
+    } else if(typeof bookProp === 'boolean') {
+        return books
+            .filter(book => book.available === bookProp)
+            .map(book => book.title);
+    }
+}
+
 // =============================================================
 
 // Task #1
@@ -148,3 +164,6 @@ function checkoutBooks(customer: string, ...bookIDs: number[]): string[] {
 
 // console.log(checkoutBooks('Ann'));
 // console.log(checkoutBooks('Ann', 1));
+
+// Task #6
+console.log(getTitles(false));
