@@ -85,6 +85,10 @@ function getBookByID(id: number): object {
     return books.find(book => book.id === id);
 }
 
+function createCustomerID(name: string, id: number): string {
+    return `${name}${id}`;
+}
+
 // =============================================================
 
 // Task #1
@@ -97,5 +101,14 @@ logBookTitles((getBookTitlesByCategory(Category.JavaScript)));
 // const titles = getBookTitlesByCategory(Category.JavaScript);
 // titles.forEach(title => console.log(title));
 
-const book = getBookByID(2)
+const book = getBookByID(2);
 console.log(book);
+
+// Task #4
+let myId = createCustomerID('Ann', 10);
+console.log(myId);
+let idGenerator: (name: string, id: number) => string;
+idGenerator = (name: string, id: number) => `${name}${id}`;
+idGenerator = (createCustomerID);
+myId = idGenerator('Ann', 100);
+console.log(myId);
