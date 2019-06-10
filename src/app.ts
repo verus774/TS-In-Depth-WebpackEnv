@@ -42,7 +42,7 @@ interface Librarian extends Person {
     assistCustomer: (custName: string) => void;
 }
 
-class ReferenceItem {
+abstract class ReferenceItem {
     // title: string;
     // year: number;
 
@@ -73,6 +73,8 @@ class ReferenceItem {
         console.log(`${this.title} was published in ${this.year}`);
         console.log(ReferenceItem.department);
     }
+
+    abstract printCitation();
 }
 
 class Encyclopedia extends ReferenceItem{
@@ -83,6 +85,10 @@ class Encyclopedia extends ReferenceItem{
     printItem(): void {
         super.printItem();
         console.log(`Edition: ${this.edition} ${this.year}`);
+    }
+
+    printCitation() {
+        console.log(`${this.title} - ${this.year}`);
     }
 }
 
@@ -289,3 +295,6 @@ const favoriteLibrarian: Librarian = {
 // const ref = new Encyclopedia('Title', 2019, 10);
 // ref.printItem();
 
+// Task #13
+const ref = new Encyclopedia('Title', 2019, 10);
+ref.printCitation();
