@@ -42,6 +42,40 @@ interface Librarian extends Person {
     assistCustomer: (custName: string) => void;
 }
 
+class ReferenceItem {
+    // title: string;
+    // year: number;
+
+    /*constructor(newTitle: string, newYear: number) {
+        console.log('Creating a new ReferenceItem...');
+
+        this.title = newTitle;
+        this.year = newYear;
+    }*/
+
+    private _publisher: string;
+
+    static department: string = 'Fiction';
+
+    constructor(public title: string, private year: number) {
+        console.log('Creating a new ReferenceItem...');
+    }
+
+    get publisher(): string {
+        return this._publisher.toUpperCase();
+    }
+
+    set publisher(newPublisher: string) {
+        this._publisher = newPublisher;
+    }
+
+    printItem(): void {
+        console.log(`${this.title} was published in ${this.year}`);
+        console.log(ReferenceItem.department);
+    }
+}
+
+
 function getAllBooks(): Book[] {
     let books: Array<Book> = [
         {
@@ -217,11 +251,11 @@ function printBook(book: Book):void {
 // myBook.markDamaged('missing back cover');
 
 // Task #8
-const logDamage: DamageLogger = (reason: string) => console.log(`Damaged: ${reason}`);
-logDamage('missing back cover');
+// const logDamage: DamageLogger = (reason: string) => console.log(`Damaged: ${reason}`);
+// logDamage('missing back cover');
 
 // Task #9
-const favoriteAuthor: Author = {
+/*const favoriteAuthor: Author = {
     email: 'aaa@cc.com',
     name: 'Ann',
     numBooksPublished: 2,
@@ -232,4 +266,11 @@ const favoriteLibrarian: Librarian = {
     name: 'Ann',
     department: 'Classical literature',
     assistCustomer: (custName: string) => console.log(custName)
-};
+};*/
+
+// Task #11
+// const ref = new ReferenceItem('Title', 2019);
+// ref.printItem();
+// ref.publisher = 'Ann';
+// console.log(ref.publisher);
+
