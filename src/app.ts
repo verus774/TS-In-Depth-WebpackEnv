@@ -57,7 +57,7 @@ class ReferenceItem {
 
     static department: string = 'Fiction';
 
-    constructor(public title: string, private year: number) {
+    constructor(public title: string, protected year: number) {
         console.log('Creating a new ReferenceItem...');
     }
 
@@ -72,6 +72,17 @@ class ReferenceItem {
     printItem(): void {
         console.log(`${this.title} was published in ${this.year}`);
         console.log(ReferenceItem.department);
+    }
+}
+
+class Encyclopedia extends ReferenceItem{
+    constructor(newTitle: string, newYear: number, public edition: number) {
+        super(newTitle, newYear);
+    }
+
+    printItem(): void {
+        super.printItem();
+        console.log(`Edition: ${this.edition} ${this.year}`);
     }
 }
 
@@ -273,4 +284,8 @@ const favoriteLibrarian: Librarian = {
 // ref.printItem();
 // ref.publisher = 'Ann';
 // console.log(ref.publisher);
+
+// Task #12
+// const ref = new Encyclopedia('Title', 2019, 10);
+// ref.printItem();
 
