@@ -1,7 +1,7 @@
 import {Category} from './enums';
 import {Book, Librarian, Author, Logger} from './intefaces';
 import {ReferenceItem, UniversityLibrarian} from './classes';
-import RefBook from './encyclopedia';
+import RefBook from './classes/encyclopedia';
 
 showHello('greeting', 'TypeScript');
 
