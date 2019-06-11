@@ -203,12 +203,12 @@ const favoriteLibrarian: Librarian = {
     assistCustomer: (custName: string) => console.log(custName)
 };*/
 
-// Task #10
-/*
+// Task #10, 22
 const favoriteLibrarian: Librarian = new UniversityLibrarian();
 favoriteLibrarian.name = 'name';
 favoriteLibrarian.assistCustomer('customer');
-*/
+// Task #22
+favoriteLibrarian.printLibrarian();
 
 // Task #11
 // const ref = new ReferenceItem('Title', 2019);
