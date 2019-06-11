@@ -1,6 +1,7 @@
 import {Category} from './enums';
 import {Book, Librarian, Author, Logger} from './intefaces';
 import {ReferenceItem, UniversityLibrarian} from './classes';
+import RefBook from './encyclopedia';
 
 showHello('greeting', 'TypeScript');
 
@@ -8,23 +9,6 @@ function showHello(divName: string, name: string) {
   const elt = document.getElementById(divName);
   elt.innerText = `Hello from ${name}`;
 }
-
-
-class Encyclopedia extends ReferenceItem{
-    constructor(newTitle: string, newYear: number, public edition: number) {
-        super(newTitle, newYear);
-    }
-
-    printItem(): void {
-        super.printItem();
-        console.log(`Edition: ${this.edition} ${this.year}`);
-    }
-
-    printCitation() {
-        console.log(`${this.title} - ${this.year}`);
-    }
-}
-
 
 function getAllBooks(): Book[] {
     let books: Array<Book> = [
@@ -238,3 +222,8 @@ favoriteLibrarian.assistCustomer('customer');
 // Task #13
 // const ref = new Encyclopedia('Title', 2019, 10);
 // ref.printCitation();
+
+// Task #16
+/*const ref = new RefBook('Title', 2019, 10);
+ref.printItem();
+ref.printCitation();*/
