@@ -244,7 +244,6 @@ ref.printCitation();*/
 // inventory.forEach(book => bookShelf.add(book));
 // console.log(bookShelf.getFirst());
 
-/*
 const magazines: Array<Magazine> = [
     { title: 'Programming Language Monthly', publisher: 'Code Mags' },
     { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
@@ -252,5 +251,8 @@ const magazines: Array<Magazine> = [
 ];
 const magazineShelf:Shelf<Magazine> = new Shelf<Magazine>();
 magazines.forEach(mag => magazineShelf.add(mag));
-console.log(magazineShelf.getFirst());
-*/
+// console.log(magazineShelf.getFirst());
+
+// Task #20
+magazineShelf.printTitles();
+console.log(magazineShelf.find('Five Points'));
