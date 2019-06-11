@@ -32,3 +32,17 @@ export function writable(isWritable: boolean) {
         descriptor.writable = isWritable;
     }
 }
+
+export function timeout(ms: number = 0) {
+    return function (target: Object, methodName: string, descriptor: PropertyDescriptor) {
+        const originalMethod = descriptor.value;
+
+        descriptor.value = function (...args: any[]) {
+            setTimeout(() => {
+                originalMethod.apply(this, args);
+            }, ms)
+        };
+
+        return descriptor;
+    }
+}

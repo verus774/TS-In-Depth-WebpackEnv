@@ -269,3 +269,7 @@ console.log(magazineShelf.getFirst());
 // favoriteLibrarian.assistFaculty();
 // favoriteLibrarian.teachCommunity = () => console.log('changed 2');
 // favoriteLibrarian.teachCommunity();
+
+// Task #24
+// const ref = new RefBook('Title', 2019, 10);
+// ref.printItem();
