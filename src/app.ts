@@ -42,6 +42,16 @@ interface Librarian extends Person {
     assistCustomer: (custName: string) => void;
 }
 
+class UniversityLibrarian implements Librarian {
+    department: string;
+    email: string;
+    name: string;
+
+    assistCustomer(custName: string) {
+        console.log(`${this.name} is assisting ${custName}`);
+    }
+}
+
 abstract class ReferenceItem {
     // title: string;
     // year: number;
@@ -284,6 +294,13 @@ const favoriteLibrarian: Librarian = {
     department: 'Classical literature',
     assistCustomer: (custName: string) => console.log(custName)
 };*/
+
+// Task #10
+/*
+const favoriteLibrarian: Librarian = new UniversityLibrarian();
+favoriteLibrarian.name = 'name';
+favoriteLibrarian.assistCustomer('customer');
+*/
 
 // Task #11
 // const ref = new ReferenceItem('Title', 2019);
