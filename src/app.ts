@@ -1,6 +1,6 @@
 import {Category} from './enums';
-import {Book, Librarian, Author, Logger} from './intefaces';
-import {ReferenceItem, UniversityLibrarian} from './classes';
+import {Book, Librarian, Author, Logger, Magazine} from './intefaces';
+import {ReferenceItem, UniversityLibrarian, Shelf} from './classes';
 import RefBook from './classes/encyclopedia';
 import {purge} from './lib/utility-functions';
 
@@ -230,13 +230,27 @@ ref.printItem();
 ref.printCitation();*/
 
 // Task #18
-/*
-const inventory: Array<Book> = [
+/*const inventory: Array<Book> = [
     {id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software},
     {id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software},
     {id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software},
     {id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software}
+];*/
+// console.log(purge<Book>(inventory));
+// console.log(purge<number>([1, 2, 3, 4]));
+
+// Task #19
+// const bookShelf:Shelf<Book> = new Shelf<Book>();
+// inventory.forEach(book => bookShelf.add(book));
+// console.log(bookShelf.getFirst());
+
+/*
+const magazines: Array<Magazine> = [
+    { title: 'Programming Language Monthly', publisher: 'Code Mags' },
+    { title: 'Literary Fiction Quarterly', publisher: 'College Press' },
+    { title: 'Five Points', publisher: 'GSU' }
 ];
-console.log(purge<Book>(inventory));
-console.log(purge<number>([1, 2, 3, 4]));
+const magazineShelf:Shelf<Magazine> = new Shelf<Magazine>();
+magazines.forEach(mag => magazineShelf.add(mag));
+console.log(magazineShelf.getFirst());
 */
