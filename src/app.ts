@@ -2,12 +2,13 @@ import {Category} from './enums';
 import {Book, Librarian, Author, Logger} from './intefaces';
 import {ReferenceItem, UniversityLibrarian} from './classes';
 import RefBook from './classes/encyclopedia';
+import {purge} from './lib/utility-functions';
 
 showHello('greeting', 'TypeScript');
 
 function showHello(divName: string, name: string) {
-  const elt = document.getElementById(divName);
-  elt.innerText = `Hello from ${name}`;
+    const elt = document.getElementById(divName);
+    elt.innerText = `Hello from ${name}`;
 }
 
 function getAllBooks(): Book[] {
@@ -50,7 +51,7 @@ function logFirstAvailable(books = getAllBooks()): void {
     let firstAvailableTitle: string = '';
 
     for (const book of books) {
-        if(book.available) {
+        if (book.available) {
             firstAvailableTitle = book.title;
             break;
         }
@@ -89,11 +90,11 @@ function createCustomerID(name: string, id: number): string {
 function createCustomer(name: string, age?: number, city?: string): void {
     console.log(`Customer name: ${name}`);
 
-    if(age) {
+    if (age) {
         console.log(`Customer age: ${age}`);
     }
 
-    if(city) {
+    if (city) {
         console.log(`Customer city: ${city}`);
     }
 }
@@ -101,7 +102,7 @@ function createCustomer(name: string, age?: number, city?: string): void {
 function checkoutBooks(customer: string, ...bookIDs: number[]): string[] {
     const titles: string[] = [];
 
-    for(const id of bookIDs) {
+    for (const id of bookIDs) {
         const book = getBookByID(id);
         if (book.available) {
             titles.push(book.title);
@@ -115,18 +116,18 @@ function getTitles(available: boolean): string[];
 function getTitles(bookProp: any): string[] {
     const books = getAllBooks();
 
-    if(typeof bookProp === 'string') {
+    if (typeof bookProp === 'string') {
         return books
             .filter(book => book.author === bookProp)
             .map(book => book.title);
-    } else if(typeof bookProp === 'boolean') {
+    } else if (typeof bookProp === 'boolean') {
         return books
             .filter(book => book.available === bookProp)
             .map(book => book.title);
     }
 }
 
-function printBook(book: Book):void {
+function printBook(book: Book): void {
     console.log(`${book.title} by ${book.author}`);
 }
 
@@ -227,3 +228,15 @@ favoriteLibrarian.assistCustomer('customer');
 /*const ref = new RefBook('Title', 2019, 10);
 ref.printItem();
 ref.printCitation();*/
+
+// Task #18
+/*
+const inventory: Array<Book> = [
+    {id: 10, title: 'The C Programming Language', author: 'K & R', available: true, category: Category.Software},
+    {id: 11, title: 'Code Complete', author: 'Steve McConnell', available: true, category: Category.Software},
+    {id: 12, title: '8-Bit Graphics with Cobol', author: 'A. B.', available: true, category: Category.Software},
+    {id: 13, title: 'Cool autoexec.bat Scripts!', author: 'C. D.', available: true, category: Category.Software}
+];
+console.log(purge<Book>(inventory));
+console.log(purge<number>([1, 2, 3, 4]));
+*/
