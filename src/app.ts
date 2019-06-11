@@ -1,3 +1,7 @@
+import {Category} from './enums';
+import {Book, Librarian, Author, Logger} from './intefaces';
+import {ReferenceItem, UniversityLibrarian} from './classes';
+
 showHello('greeting', 'TypeScript');
 
 function showHello(divName: string, name: string) {
@@ -5,87 +9,6 @@ function showHello(divName: string, name: string) {
   elt.innerText = `Hello from ${name}`;
 }
 
-enum Category {
-    JavaScript,
-    CSS,
-    HTML,
-    TypeScript,
-    Angular,
-}
-
-interface Book {
-    id: number;
-    title: string;
-    author: string;
-    available: boolean;
-    category: Category;
-    pages?: number;
-    markDamaged?: DamageLogger;
-}
-
-interface DamageLogger {
-    (reason: string): void;
-}
-
-interface Person {
-    name: string;
-    email: string;
-}
-
-interface Author extends Person{
-    numBooksPublished: number;
-}
-
-interface Librarian extends Person {
-    department: string;
-    name: string;
-    assistCustomer: (custName: string) => void;
-}
-
-class UniversityLibrarian implements Librarian {
-    department: string;
-    email: string;
-    name: string;
-
-    assistCustomer(custName: string) {
-        console.log(`${this.name} is assisting ${custName}`);
-    }
-}
-
-abstract class ReferenceItem {
-    // title: string;
-    // year: number;
-
-    /*constructor(newTitle: string, newYear: number) {
-        console.log('Creating a new ReferenceItem...');
-
-        this.title = newTitle;
-        this.year = newYear;
-    }*/
-
-    private _publisher: string;
-
-    static department: string = 'Fiction';
-
-    constructor(public title: string, protected year: number) {
-        console.log('Creating a new ReferenceItem...');
-    }
-
-    get publisher(): string {
-        return this._publisher.toUpperCase();
-    }
-
-    set publisher(newPublisher: string) {
-        this._publisher = newPublisher;
-    }
-
-    printItem(): void {
-        console.log(`${this.title} was published in ${this.year}`);
-        console.log(ReferenceItem.department);
-    }
-
-    abstract printCitation();
-}
 
 class Encyclopedia extends ReferenceItem{
     constructor(newTitle: string, newYear: number, public edition: number) {
@@ -278,7 +201,7 @@ function printBook(book: Book):void {
 // myBook.markDamaged('missing back cover');
 
 // Task #8
-// const logDamage: DamageLogger = (reason: string) => console.log(`Damaged: ${reason}`);
+// const logDamage: Logger = (reason: string) => console.log(`Damaged: ${reason}`);
 // logDamage('missing back cover');
 
 // Task #9
@@ -313,5 +236,5 @@ favoriteLibrarian.assistCustomer('customer');
 // ref.printItem();
 
 // Task #13
-const ref = new Encyclopedia('Title', 2019, 10);
-ref.printCitation();
+// const ref = new Encyclopedia('Title', 2019, 10);
+// ref.printCitation();
