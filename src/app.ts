@@ -258,3 +258,6 @@ console.log(magazineShelf.getFirst());
 // Task #20
 // magazineShelf.printTitles();
 // console.log(magazineShelf.find('Five Points'));
+
+// Task #21
+// const favoriteLibrarian: Librarian = new UniversityLibrarian();
