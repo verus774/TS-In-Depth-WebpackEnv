@@ -204,11 +204,11 @@ const favoriteLibrarian: Librarian = {
 };*/
 
 // Task #10, 22
-const favoriteLibrarian: Librarian = new UniversityLibrarian();
-favoriteLibrarian.name = 'name';
-favoriteLibrarian.assistCustomer('customer');
+// const favoriteLibrarian: Librarian = new UniversityLibrarian();
+// favoriteLibrarian.name = 'name';
+// favoriteLibrarian.assistCustomer('customer');
 // Task #22
-favoriteLibrarian.printLibrarian();
+// favoriteLibrarian.printLibrarian();
 
 // Task #11
 // const ref = new ReferenceItem('Title', 2019);
@@ -261,3 +261,11 @@ console.log(magazineShelf.getFirst());
 
 // Task #21
 // const favoriteLibrarian: Librarian = new UniversityLibrarian();
+
+// Task #23
+// const favoriteLibrarian = new UniversityLibrarian();
+// favoriteLibrarian.name = 'name';
+// favoriteLibrarian.assistFaculty = () => console.log('changed 1');
+// favoriteLibrarian.assistFaculty();
+// favoriteLibrarian.teachCommunity = () => console.log('changed 2');
+// favoriteLibrarian.teachCommunity();
