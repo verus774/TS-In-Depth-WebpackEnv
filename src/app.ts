@@ -1,5 +1,5 @@
 import {Category} from './enums';
-import {getBooksByCategoryPromise} from './lib/utility-functions';
+import {getBooksByCategoryPromise, logSearchResults} from './lib/utility-functions';
 
 showHello('greeting', 'TypeScript');
 
@@ -166,7 +166,7 @@ console.log(magazineShelf.getFirst());
 // getBooksByCategory(Category.JavaScript, logCategorySearch);
 
 // Task #29
-console.log('start');
+/*console.log('start');
 getBooksByCategoryPromise(Category.JavaScript)
     .then(titles => {
         console.log(titles);
@@ -179,4 +179,10 @@ getBooksByCategoryPromise(Category.Software)
     .then(titles => console.log(titles))
     .catch(err => console.log(err))
     .finally(() => console.log('complete'));
-console.log('finish');
+console.log('finish');*/
+
+// Task #30
+console.log('Beginning search...');
+logSearchResults(Category.JavaScript)
+    .catch(reason => console.log(reason));
+console.log('Search submitted...');
