@@ -53,7 +53,7 @@ export function logParameter(target: Object, methodName: string, paramIndex: num
     console.log(paramIndex);
 
     const key = `${methodName}_decor_params_indexes`;
-    if(Array.isArray(target[key])) {
+    if (Array.isArray(target[key])) {
         target[key].push(paramIndex);
     } else {
         target[key] = [paramIndex];
@@ -67,9 +67,9 @@ export function logMethod(target: Object, methodName: string, descriptor: Proper
         const key = `${methodName}_decor_params_indexes`;
         const indexes = target[key];
 
-        if(Array.isArray(indexes)) {
-            args.forEach((arg, idx )=> {
-                if(indexes.indexOf(indexes) !== -1) {
+        if (Array.isArray(indexes)) {
+            args.forEach((arg, idx) => {
+                if (indexes.indexOf(indexes) !== -1) {
                     console.log(`Method: ${methodName}, ParamIndex: ${idx}, ParamValue: ${arg}`);
                 }
             });
@@ -80,4 +80,49 @@ export function logMethod(target: Object, methodName: string, descriptor: Proper
     };
 
     return descriptor;
+}
+
+function makeProperty<T>(
+    prototype: any,
+    propertyName: string,
+    getTransformer: (value: any) => T,
+    setTransformer: (value: any) => T
+) {
+    const values = new Map<any, T>();
+
+    Object.defineProperty(prototype, propertyName, {
+        set(firstValue: any) {
+            Object.defineProperty(this, propertyName, {
+                get() {
+                    if (getTransformer) {
+                        return getTransformer(values.get(this));
+                    } else {
+                        values.get(this);
+                    }
+                },
+                set(value: any) {
+                    if (setTransformer) {
+                        values.set(this, setTransformer(value));
+                    } else {
+                        values.set(this, value);
+                    }
+                },
+                enumerable: true
+            });
+            this[propertyName] = firstValue;
+        },
+        enumerable: true,
+        configurable: true
+    });
+}
+
+export function format(pref: string = 'Mr./Mrs.') {
+    return function (target: Object, propName: string) {
+        makeProperty(
+            target,
+            propName,
+            value => `${pref} ${value}`,
+            value => value,
+        );
+    };
 }
