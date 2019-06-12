@@ -1,5 +1,5 @@
 import * as Interfaces from '../intefaces';
-import {logger, sealed, writable} from '../decorators';
+import {logger, logMethod, logParameter, sealed, writable} from '../decorators';
 
 @logger
 @sealed('UniversityLibrarian')
@@ -8,7 +8,8 @@ export class UniversityLibrarian implements Interfaces.Librarian {
     email: string;
     name: string;
 
-    assistCustomer(custName: string) {
+    @logMethod
+    assistCustomer(@logParameter custName: string) {
         console.log(`${this.name} is assisting ${custName}`);
     }
 

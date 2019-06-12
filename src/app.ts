@@ -273,3 +273,8 @@ console.log(magazineShelf.getFirst());
 // Task #24
 // const ref = new RefBook('Title', 2019, 10);
 // ref.printItem();
+
+// Task #25
+const favoriteLibrarian = new UniversityLibrarian();
+favoriteLibrarian.name = 'name';
+favoriteLibrarian.assistCustomer('Boris');

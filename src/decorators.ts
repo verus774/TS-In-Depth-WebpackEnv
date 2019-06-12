@@ -46,3 +46,38 @@ export function timeout(ms: number = 0) {
         return descriptor;
     }
 }
+
+export function logParameter(target: Object, methodName: string, paramIndex: number) {
+    console.log(target);
+    console.log(methodName);
+    console.log(paramIndex);
+
+    const key = `${methodName}_decor_params_indexes`;
+    if(Array.isArray(target[key])) {
+        target[key].push(paramIndex);
+    } else {
+        target[key] = [paramIndex];
+    }
+}
+
+export function logMethod(target: Object, methodName: string, descriptor: PropertyDescriptor) {
+    const originalMethod = descriptor.value;
+
+    descriptor.value = function (...args: any[]) {
+        const key = `${methodName}_decor_params_indexes`;
+        const indexes = target[key];
+
+        if(Array.isArray(indexes)) {
+            args.forEach((arg, idx )=> {
+                if(indexes.indexOf(indexes) !== -1) {
+                    console.log(`Method: ${methodName}, ParamIndex: ${idx}, ParamValue: ${arg}`);
+                }
+            });
+        }
+
+        const result = originalMethod.apply(this, args);
+        return result;
+    };
+
+    return descriptor;
+}
