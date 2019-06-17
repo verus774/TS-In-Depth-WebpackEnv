@@ -1,5 +1,6 @@
 import {Category} from './enums';
 import {getBooksByCategoryPromise, logSearchResults} from './lib/utility-functions';
+import Developer from './classes/developer';
 
 showHello('greeting', 'TypeScript');
 
@@ -182,7 +183,12 @@ getBooksByCategoryPromise(Category.Software)
 console.log('finish');*/
 
 // Task #30
-console.log('Beginning search...');
+/*console.log('Beginning search...');
 logSearchResults(Category.JavaScript)
     .catch(reason => console.log(reason));
-console.log('Search submitted...');
+console.log('Search submitted...');*/
+
+// home task
+const dev = new Developer('John', 30, undefined, 500);
+dev.greeting();
+console.log(dev.salary);

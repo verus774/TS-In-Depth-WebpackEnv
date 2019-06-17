@@ -7,4 +7,10 @@ enum Category {
     Software,
 }
 
-export {Category};
+enum Title {
+    Junior = 'student',
+    Middle = 'real man',
+    Senior = 'God',
+}
+
+export {Category, Title};

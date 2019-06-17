@@ -44,5 +44,10 @@ interface LibMgrCallback {
     (err: Error, titles: string[]): void;
 }
 
+interface IPerson {
+    name: string;
+    age: number;
+    greeting: (prefix: string) => void;
+}
 
-export {Book, DamageLogger as Logger, Author, Librarian, Magazine, ShelfItem, LibMgrCallback};
+export {Book, DamageLogger as Logger, Author, Librarian, Magazine, ShelfItem, LibMgrCallback, IPerson};
